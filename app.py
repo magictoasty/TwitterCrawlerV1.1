@@ -17,6 +17,7 @@ def index():
             response.raw.decode_content = True
             size = len(response.content)
             storage.genBlobContainer(container_name)
-            storage.uploadBlob(container_name, blob_name, response.content)
+            if "video" not in url:
+                storage.uploadBlob(container_name, blob_name, response.content)
             # del response
     return "<h1>size_pic_content = " + str(size) + " </h1>"
